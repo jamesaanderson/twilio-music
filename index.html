@@ -6,10 +6,17 @@
 
 <body>
   <script src='/socket.io/socket.io.js'></script>
+  <script src="http://connect.soundcloud.com/sdk.js"></script>
   <script>
+    SC.initialize({client_id: '9614e613efd137879d1dfca186c60eac'});
+
     var socket = io();
     socket.on('sms', function(song) {
-      console.log(song);
+      SC.get('/tracks', {q: song}, function(songs) {
+        SC.stream('/tracks/'+songs[0]['id'], function(sound) {
+          sound.play();
+        });
+      });
     });
   </script>
 </body>
