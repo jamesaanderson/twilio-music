@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Twilio Music</title>
+</head>
+
+<body>
+  <script src='/socket.io/socket.io.js'></script>
+  <script>
+    var socket = io();
+    socket.on('sms', function(song) {
+      console.log(song);
+    });
+  </script>
+</body>
+</html>
