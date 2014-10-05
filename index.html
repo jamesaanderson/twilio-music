@@ -17,6 +17,7 @@
       SC.get('/tracks', {q: song}, function(songs) {
         SC.stream('/tracks/'+songs[0]['id'], function(sound) {
           sound.play();
+          window.setTimeout(function() { sound.stop() }, 10000);
         });
       });
     });
